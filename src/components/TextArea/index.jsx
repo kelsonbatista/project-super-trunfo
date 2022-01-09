@@ -8,6 +8,7 @@ class TextArea extends Component {
       dataTestid,
       classLabel,
       classElement,
+      value,
       label,
       onChange,
     } = this.props;
@@ -20,6 +21,7 @@ class TextArea extends Component {
             id={ id }
             data-testid={ dataTestid }
             className={ classElement }
+            value={ value }
             onChange={ onChange }
           />
         </label>
@@ -33,6 +35,7 @@ TextArea.propTypes = {
   dataTestid: PropTypes.string,
   classLabel: PropTypes.string,
   classElement: PropTypes.string,
+  value: PropTypes.string,
   label: PropTypes.string,
   onChange: PropTypes.func,
 }.isRequired;

@@ -8,6 +8,7 @@ class Button extends Component {
       type,
       dataTestid,
       classElement,
+      disabled,
       label,
       onClick,
     } = this.props;
@@ -19,6 +20,7 @@ class Button extends Component {
           type={ type === 'submit' ? 'submit' : 'reset' }
           data-testid={ dataTestid }
           className={ classElement }
+          disabled={ disabled }
           onClick={ onClick }
         >
           {label}
@@ -33,6 +35,7 @@ Button.propTypes = {
   type: PropTypes.string,
   dataTestid: PropTypes.string,
   classElement: PropTypes.string,
+  disabled: PropTypes.bool,
   label: PropTypes.string,
   onClick: PropTypes.func,
 }.isRequired;

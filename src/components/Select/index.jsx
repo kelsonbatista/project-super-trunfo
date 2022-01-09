@@ -8,6 +8,7 @@ class Select extends Component {
       dataTestid,
       classLabel,
       classElement,
+      value,
       label,
       onChange,
       options,

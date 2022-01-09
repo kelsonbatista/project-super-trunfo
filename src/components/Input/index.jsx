@@ -9,6 +9,8 @@ class Input extends Component {
       dataTestid,
       classLabel,
       classElement,
+      value,
+      checked,
       label,
       onChange,
     } = this.props;
@@ -22,6 +24,8 @@ class Input extends Component {
             type={ type }
             data-testid={ dataTestid }
             className={ classElement }
+            value={ value }
+            checked={ checked }
             onChange={ onChange }
           />
         </label>
@@ -36,6 +40,8 @@ Input.propTypes = {
   dataTestid: PropTypes.string,
   classLabel: PropTypes.string,
   classElement: PropTypes.string,
+  value: PropTypes.string,
+  checked: PropTypes.bool,
   label: PropTypes.string,
   onChange: PropTypes.func,
 }.isRequired;
