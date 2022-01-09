@@ -9,6 +9,7 @@ class Input extends Component {
       dataTestid,
       classLabel,
       classElement,
+      classDiv,
       value,
       checked,
       label,
@@ -16,7 +17,7 @@ class Input extends Component {
     } = this.props;
 
     return (
-      <div>
+      <div className={ classDiv }>
         <label htmlFor={ id } className={ classLabel }>
           {label}
           <input
@@ -40,6 +41,7 @@ Input.propTypes = {
   dataTestid: PropTypes.string,
   classLabel: PropTypes.string,
   classElement: PropTypes.string,
+  classDiv: PropTypes.string,
   value: PropTypes.string,
   checked: PropTypes.bool,
   label: PropTypes.string,

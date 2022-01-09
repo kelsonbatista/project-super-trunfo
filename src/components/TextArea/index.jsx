@@ -8,13 +8,14 @@ class TextArea extends Component {
       dataTestid,
       classLabel,
       classElement,
+      classDiv,
       value,
       label,
       onChange,
     } = this.props;
 
     return (
-      <div>
+      <div className={ classDiv }>
         <label htmlFor={ id } className={ classLabel }>
           {label}
           <textarea
@@ -35,6 +36,7 @@ TextArea.propTypes = {
   dataTestid: PropTypes.string,
   classLabel: PropTypes.string,
   classElement: PropTypes.string,
+  classDiv: PropTypes.string,
   value: PropTypes.string,
   label: PropTypes.string,
   onChange: PropTypes.func,

@@ -1,0 +1,42 @@
+.header__title {
+  background: #ddd;
+  margin: 40px auto;
+  text-align: center;
+}
+
+main {
+  align-items: flex-start;
+  display: flex;
+  margin-bottom: 300px;
+}
+
+.form, .card {
+  background: #ddd;
+  min-height: 700px;
+  width: 70%;
+}
+
+.form__div, .card__div {
+  background: #999;
+  margin: 0 auto;
+  min-height: 700px;
+  width: 80%;
+}
+
+.form__title, .card__title {
+  text-align: center;
+  margin: 0 auto 20px;
+}
+
+.form__single {
+  background: yellow;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.card__single {
+  background: orange;
+  height: 475px;
+  margin: 0 auto;
+  width: 300px;
+}

@@ -4,7 +4,6 @@ import Input from '../Input';
 import TextArea from '../TextArea';
 import Select from '../Select';
 import Button from '../Button';
-// import PropTypes from 'prop-types'
 
 class Form extends Component {
   render() {
@@ -24,14 +23,14 @@ class Form extends Component {
     } = this.props;
 
     return (
-      <div>
-        <h1>Add new card</h1>
+      <div className="form__single">
         <Input
           id="name"
           type="text"
           dataTestid="name-input"
           classLabel="form-label"
           classElement="form-control"
+          classDiv="col-lg-12"
           value={ cardName }
           label="Name:"
           onChange={ onInputChange }
@@ -95,7 +94,7 @@ class Form extends Component {
           id="rarity"
           dataTestid="rare-input"
           classLabel="form-label"
-          classElement="form-control"
+          classElement="form-select"
           value={ cardRare }
           label="Rarity:"
           onChange={ onInputChange }

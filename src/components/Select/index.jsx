@@ -8,6 +8,7 @@ class Select extends Component {
       dataTestid,
       classLabel,
       classElement,
+      classDiv,
       value,
       label,
       onChange,
@@ -16,7 +17,7 @@ class Select extends Component {
 
     return (
 
-      <div>
+      <div className={ classDiv }>
         <label htmlFor={ id } className={ classLabel }>
           {label}
           <select
@@ -39,6 +40,7 @@ Select.propTypes = {
   dataTestid: PropTypes.string,
   classLabel: PropTypes.string,
   classElement: PropTypes.string,
+  classDiv: PropTypes.string,
   label: PropTypes.string,
   onChange: PropTypes.func,
   options: PropTypes.array,

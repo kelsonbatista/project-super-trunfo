@@ -8,13 +8,14 @@ class Button extends Component {
       type,
       dataTestid,
       classElement,
+      classDiv,
       disabled,
       label,
       onClick,
     } = this.props;
 
     return (
-      <div>
+      <div className={ classDiv }>
         <button
           id={ id }
           type={ type === 'submit' ? 'submit' : 'reset' }
@@ -35,6 +36,7 @@ Button.propTypes = {
   type: PropTypes.string,
   dataTestid: PropTypes.string,
   classElement: PropTypes.string,
+  classDiv: PropTypes.string,
   disabled: PropTypes.bool,
   label: PropTypes.string,
   onClick: PropTypes.func,
