@@ -27,76 +27,83 @@ class Form extends Component {
         <Input
           id="name"
           type="text"
+          name="cardName"
           dataTestid="name-input"
           classLabel="form-label"
           classElement="form-control"
           classDiv="col-lg-12"
           value={ cardName }
-          label="Name:"
+          label="Name"
           onChange={ onInputChange }
         />
 
         <TextArea
           id="description"
+          name="cardDescription"
           dataTestid="description-input"
           classLabel="form-label"
           classElement="form-control"
           value={ cardDescription }
-          label="Description:"
+          label="Description"
           onChange={ onInputChange }
         />
 
         <Input
           id="attr1"
           type="number"
+          name="cardAttr1"
           dataTestid="attr1-input"
           classLabel="form-label"
           classElement="form-control"
           value={ cardAttr1 }
-          label="Attribute1:"
+          label="Price"
           onChange={ onInputChange }
         />
 
         <Input
           id="attr2"
           type="number"
+          name="cardAttr2"
           dataTestid="attr2-input"
           classLabel="form-label"
           classElement="form-control"
           value={ cardAttr2 }
-          label="Attribute2:"
+          label="Speed"
           onChange={ onInputChange }
         />
 
         <Input
           id="attr3"
           type="number"
+          name="cardAttr3"
           dataTestid="attr3-input"
           classLabel="form-label"
           classElement="form-control"
           value={ cardAttr3 }
-          label="Attribute3:"
+          label="Torch"
           onChange={ onInputChange }
         />
 
         <Input
           id="image"
           type="text"
+          name="cardImage"
           dataTestid="image-input"
           classLabel="form-label"
           classElement="form-control"
           value={ cardImage }
-          label="Image:"
+          label="Image"
           onChange={ onInputChange }
         />
 
         <Select
           id="rarity"
+          name="cardRare"
           dataTestid="rare-input"
           classLabel="form-label"
           classElement="form-select"
           value={ cardRare }
-          label="Rarity:"
+          label="Rarity"
           onChange={ onInputChange }
           options={ [
             { text: 'Raro', value: 'raro' },
@@ -108,11 +115,12 @@ class Form extends Component {
         <Input
           id="supertrunfo"
           type="checkbox"
+          name="cardTrunfo"
           dataTestid="trunfo-input"
           classLabel="form-check-label"
           classElement="form-check-input"
           checked={ cardTrunfo }
-          label="Super Trunfo:"
+          label="Super Trunfo"
           onChange={ onInputChange }
         />
 

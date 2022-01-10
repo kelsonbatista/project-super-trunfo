@@ -5,6 +5,7 @@ class TextArea extends Component {
   render() {
     const {
       id,
+      name,
       dataTestid,
       classLabel,
       classElement,
@@ -18,9 +19,12 @@ class TextArea extends Component {
       <div className={ classDiv }>
         <label htmlFor={ id } className={ classLabel }>
           {label}
+          :
           <textarea
             id={ id }
+            name={ name }
             data-testid={ dataTestid }
+            data-label={ label }
             className={ classElement }
             value={ value }
             onChange={ onChange }
@@ -33,6 +37,7 @@ class TextArea extends Component {
 
 TextArea.propTypes = {
   id: PropTypes.string,
+  name: PropTypes.string,
   dataTestid: PropTypes.string,
   classLabel: PropTypes.string,
   classElement: PropTypes.string,

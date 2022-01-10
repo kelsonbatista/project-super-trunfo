@@ -5,6 +5,7 @@ class Select extends Component {
   render() {
     const {
       id,
+      name,
       dataTestid,
       classLabel,
       classElement,
@@ -20,9 +21,12 @@ class Select extends Component {
       <div className={ classDiv }>
         <label htmlFor={ id } className={ classLabel }>
           {label}
+          :
           <select
             id={ id }
+            name={ name }
             data-testid={ dataTestid }
+            data-label={ label }
             className={ classElement }
             onChange={ onChange }
           >
@@ -37,6 +41,7 @@ class Select extends Component {
 
 Select.propTypes = {
   id: PropTypes.string,
+  name: PropTypes.string,
   dataTestid: PropTypes.string,
   classLabel: PropTypes.string,
   classElement: PropTypes.string,

@@ -6,6 +6,7 @@ class Button extends Component {
     const {
       id,
       type,
+      name,
       dataTestid,
       classElement,
       classDiv,
@@ -19,7 +20,9 @@ class Button extends Component {
         <button
           id={ id }
           type={ type === 'submit' ? 'submit' : 'reset' }
+          name={ name }
           data-testid={ dataTestid }
+          data-label={ label }
           className={ classElement }
           disabled={ disabled }
           onClick={ onClick }
@@ -34,6 +37,7 @@ class Button extends Component {
 Button.propTypes = {
   id: PropTypes.string,
   type: PropTypes.string,
+  name: PropTypes.string,
   dataTestid: PropTypes.string,
   classElement: PropTypes.string,
   classDiv: PropTypes.string,
