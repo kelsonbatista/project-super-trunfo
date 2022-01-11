@@ -91,6 +91,7 @@ Card.propTypes = {
   cardAttr3Label: PropTypes.string,
   cardImage: PropTypes.string,
   cardRare: PropTypes.bool,
+  cardRareLabel: PropTypes.string,
   cardTrunfo: PropTypes.bool,
 }.isRequired;
 

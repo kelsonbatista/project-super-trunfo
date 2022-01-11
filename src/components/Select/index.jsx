@@ -17,7 +17,6 @@ class Select extends Component {
     } = this.props;
 
     return (
-
       <div className={ classDiv }>
         <label htmlFor={ id } className={ classLabel }>
           {label}
@@ -28,10 +27,11 @@ class Select extends Component {
             data-testid={ dataTestid }
             data-label={ label }
             className={ classElement }
+            value={ value }
             onChange={ onChange }
           >
-            {options.map(({ text, value }) => (
-              <option key={ value } value={ value }>{text}</option>))}
+            {options.map((text, index) => (
+              <option key={ index } value={ text }>{text}</option>))}
           </select>
         </label>
       </div>

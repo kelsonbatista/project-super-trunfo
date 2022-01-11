@@ -168,10 +168,13 @@ img {
   z-index: 200;
 }
 
+.card__rare-select {
+  text-transform: capitalize;
+}
+
 .card__super {
   background: url('./images/super.png') no-repeat;
   background-size: cover;
-  font-display: none;
   font-family: Roboto;
   font-size: 20px;
   font-weight: 700;

@@ -101,15 +101,11 @@ class Form extends Component {
           name="cardRare"
           dataTestid="rare-input"
           classLabel="form-label"
-          classElement="form-select"
+          classElement="form-select card__rare-select"
           value={ cardRare }
           label="Rarity"
           onChange={ onInputChange }
-          options={ [
-            { text: 'Raro', value: 'raro' },
-            { text: 'Normal', value: 'normal' },
-            { text: 'Muito raro', value: 'muito raro' },
-          ] }
+          options={ ['normal', 'raro', 'muito raro'] }
         />
 
         <Input
@@ -129,11 +125,10 @@ class Form extends Component {
           type="submit"
           dataTestid="save-button"
           classElement="btn btn-primary"
-          disabled={ isSaveButtonDisabled }
+          disabled={ isSaveButtonDisabled  }
           label="Salvar"
           onClick={ onSaveButtonClick }
         />
-
       </div>
     );
   }
