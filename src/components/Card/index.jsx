@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 class Card extends Component {
   render() {
     const {
+      key,
+      isList,
       cardTopic,
       cardName,
       cardDescription,
@@ -20,7 +22,7 @@ class Card extends Component {
     } = this.props;
 
     return (
-      <div className="card__single">
+      <div className={ isList ? 'card__single-list' : ' card__single' } key={ key }>
         <div className="card__bg" />
         <div className="card__topic">
           <span>{cardTopic}</span>
@@ -40,8 +42,8 @@ class Card extends Component {
           <span>{cardDescription}</span>
         </div>
 
-        <div className="card__attr1-label">
-          <span>{cardAttr1Label}</span>
+        <div className="card__attr1-label" ref={ this.attr1 }>
+          <span>{ cardAttr1Label }</span>
         </div>
 
         <div className="card__attr1" data-testid="attr1-card">
@@ -49,7 +51,7 @@ class Card extends Component {
         </div>
 
         <div className="card__attr2-label">
-          <span>{cardAttr2Label}</span>
+          <span>{ cardAttr2Label }</span>
         </div>
 
         <div className="card__attr2" data-testid="attr2-card">
@@ -81,6 +83,7 @@ class Card extends Component {
 }
 
 Card.propTypes = {
+  key: PropTypes.string,
   cardName: PropTypes.string,
   cardDescription: PropTypes.string,
   cardAttr1: PropTypes.string,
