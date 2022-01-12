@@ -217,3 +217,11 @@ img {
   white-space: nowrap;
   z-index: 200;
 }
+
+.card__btn-none {
+  display: none;
+}
+
+.card__btn-delete-div {
+  text-align: center;
+}

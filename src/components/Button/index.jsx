@@ -19,7 +19,7 @@ class Button extends Component {
       <div className={ classDiv }>
         <button
           id={ id }
-          type={ type === 'submit' ? 'submit' : 'reset' }
+          type={ type === 'submit' ? 'submit' : 'button' }
           name={ name }
           data-testid={ dataTestid }
           data-label={ label }

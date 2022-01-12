@@ -5,8 +5,8 @@ import Card from './components/Card';
 import List from './components/List';
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       cardName: '',
@@ -28,6 +28,7 @@ class App extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSaveButtonClick = this.handleSaveButtonClick.bind(this);
+    this.handleDeleteButtonClick = this.handleDeleteButtonClick.bind(this);
     this.handleButtonDisabled = this.handleButtonDisabled.bind(this);
     this.resetState = this.resetState.bind(this);
     this.handleTrunfoCard = this.handleTrunfoCard.bind(this);
@@ -63,6 +64,18 @@ class App extends React.Component {
     }));
     this.resetState();
     this.handleTrunfoCard();
+  }
+
+  handleDeleteButtonClick(event) {
+    // event.preventDefault();
+    console.log(`entrou - event.target.cardname --> ${event.target.cardName}`);
+    const { cardList } = this.state;
+    console.log(`cardList --> ${cardList[0]}`);
+    // cardList.filter((card) => card.cardName !== event.cardName);
+
+    // this.setState({
+    //   cardList: [...cardList],
+    // });
   }
 
   handleButtonDisabled() {
@@ -172,6 +185,7 @@ class App extends React.Component {
             <div className="card__div">
               <h1 className="card__title">Card</h1>
               <Card
+                avatar="https://st3.depositphotos.com/33576434/36518/v/450/depositphotos_365185852-stock-illustration-car-silhouette-abstract-logo-vector.jpg"
                 cardTopic="Luxury Cars"
                 cardName={ cardName }
                 cardDescription={ cardDescription }
@@ -192,8 +206,8 @@ class App extends React.Component {
             <div className="list__div">
               <h1 className="list__title">List</h1>
               <List
-                cardName={ cardName }
                 cardList={ cardList }
+                onDeleteButtonClick={ () => this.handleDeleteButtonClick }
               />
             </div>
           </section>

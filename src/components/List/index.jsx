@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Card from '../Card';
+import Button from '../Button';
 
 class List extends Component {
   render() {
     const {
       cardList,
+      onDeleteButtonClick,
     } = this.props;
 
     const isList = true;
@@ -30,6 +32,17 @@ class List extends Component {
               cardRareLabel={ card.cardRareLabel }
               cardTrunfo={ card.cardTrunfo }
             />
+
+            <Button
+              id="button"
+              type="button"
+              dataTestid="delete-button"
+              classElement="btn btn-primary"
+              classDiv={ isList ? 'card__btn-delete-div' : 'card__btn-none' }
+              disabled={ false }
+              label="Excluir"
+              onClick={ () => this.handleDeleteButtonClick1(card) }
+            />
           </div>
         ))}
       </div>
@@ -38,8 +51,8 @@ class List extends Component {
 }
 
 List.propTypes = {
-  cardName: PropTypes.string,
   cardList: PropTypes.array,
+  onDeleteButtonClick: PropTypes.func,
 }.isRequired;
 
 export default List;

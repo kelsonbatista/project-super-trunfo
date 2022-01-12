@@ -5,6 +5,7 @@ class Card extends Component {
   render() {
     const {
       isList,
+      avatar,
       cardTopic,
       cardName,
       cardDescription,
@@ -20,10 +21,12 @@ class Card extends Component {
       cardTrunfo,
     } = this.props;
 
-    const avatar = 'https://st3.depositphotos.com/33576434/36518/v/450/depositphotos_365185852-stock-illustration-car-silhouette-abstract-logo-vector.jpg';
-
     return (
-      <div className={ isList ? 'card__single-list' : ' card__single' } key={ cardName }>
+      <div
+        className={ isList ? 'card__single-list' : 'card__single' }
+        key={ cardName }
+      >
+
         <div className="card__bg" />
         <div className="card__topic">
           <span>{cardTopic}</span>
@@ -77,14 +80,13 @@ class Card extends Component {
             ? <div className="card__super" data-testid="trunfo-card">Super Trunfo</div>
             : ''
         }
-
       </div>
     );
   }
 }
 
 Card.propTypes = {
-  key: PropTypes.string,
+  avatar: PropTypes.string,
   cardName: PropTypes.string,
   cardDescription: PropTypes.string,
   cardAttr1: PropTypes.string,
