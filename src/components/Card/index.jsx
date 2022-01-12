@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 class Card extends Component {
   render() {
     const {
-      key,
       isList,
       cardTopic,
       cardName,
@@ -21,8 +20,10 @@ class Card extends Component {
       cardTrunfo,
     } = this.props;
 
+    const avatar = 'https://st3.depositphotos.com/33576434/36518/v/450/depositphotos_365185852-stock-illustration-car-silhouette-abstract-logo-vector.jpg';
+
     return (
-      <div className={ isList ? 'card__single-list' : ' card__single' } key={ key }>
+      <div className={ isList ? 'card__single-list' : ' card__single' } key={ cardName }>
         <div className="card__bg" />
         <div className="card__topic">
           <span>{cardTopic}</span>
@@ -33,7 +34,7 @@ class Card extends Component {
         <div className="card__image">
           <img
             data-testid="image-card"
-            src={ cardImage }
+            src={ cardImage || avatar }
             alt={ cardName }
           />
         </div>

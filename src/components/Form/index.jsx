@@ -21,10 +21,28 @@ class Form extends Component {
       cardRareLabel,
       cardTrunfo,
       hasTrunfo,
+      textTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
     } = this.props;
+
+    const checkboxElement = (
+      <div className="">
+        <label htmlFor="supertrunfo" className="form-label">
+          Super Trunfo:&nbsp;
+          <input
+            id="supertrunfo"
+            type="checkbox"
+            name="cardTrunfo"
+            data-testid="trunfo-input"
+            className="form-check-input"
+            checked={ cardTrunfo }
+            onChange={ onInputChange }
+          />
+        </label>
+      </div>
+    );
 
     return (
       <div className="form__single">
@@ -113,17 +131,9 @@ class Form extends Component {
             options={ ['normal', 'raro', 'muito raro'] }
           />
 
-          <Input
-            id="supertrunfo"
-            type="checkbox"
-            name="cardTrunfo"
-            dataTestid="trunfo-input"
-            classLabel="form-check-label"
-            classElement="form-check-input"
-            checked={ cardTrunfo }
-            label="Super Trunfo"
-            onChange={ onInputChange }
-          />
+          {hasTrunfo
+            ? textTrunfo
+            : checkboxElement}
 
           <Button
             id="submit"
@@ -154,6 +164,7 @@ Form.propTypes = {
   cardRareLabel: PropTypes.string,
   cardTrunfo: PropTypes.bool,
   hasTrunfo: PropTypes.bool,
+  textTrunfo: PropTypes.string,
   isSaveButtonDisabled: PropTypes.bool,
   onInputChange: PropTypes.func,
   onSaveButtonClick: PropTypes.func,

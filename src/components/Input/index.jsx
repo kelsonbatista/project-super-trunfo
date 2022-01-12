@@ -12,7 +12,6 @@ class Input extends Component {
       classElement,
       classDiv,
       value,
-      checked,
       label,
       onChange,
     } = this.props;
@@ -20,8 +19,7 @@ class Input extends Component {
     return (
       <div className={ classDiv }>
         <label htmlFor={ id } className={ classLabel }>
-          {label}
-          :
+          {`${label}: `}
           <input
             id={ id }
             type={ type }
@@ -30,7 +28,6 @@ class Input extends Component {
             data-label={ label }
             className={ classElement }
             value={ value }
-            checked={ checked }
             onChange={ onChange }
           />
         </label>
@@ -48,7 +45,6 @@ Input.propTypes = {
   classElement: PropTypes.string,
   classDiv: PropTypes.string,
   value: PropTypes.string,
-  checked: PropTypes.bool,
   label: PropTypes.string,
   onChange: PropTypes.func,
 }.isRequired;

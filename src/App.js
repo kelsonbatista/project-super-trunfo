@@ -14,12 +14,12 @@ class App extends React.Component {
       cardAttr1: '0',
       cardAttr2: '0',
       cardAttr3: '0',
-      cardAttr1Label: '',
-      cardAttr2Label: '',
-      cardAttr3Label: '',
+      cardAttr1Label: 'Price',
+      cardAttr2Label: 'Speed',
+      cardAttr3Label: 'Torch',
       cardImage: '',
       cardRare: '',
-      cardRareLabel: '',
+      cardRareLabel: 'Rarity',
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
@@ -30,23 +30,15 @@ class App extends React.Component {
     this.handleSaveButtonClick = this.handleSaveButtonClick.bind(this);
     this.handleButtonDisabled = this.handleButtonDisabled.bind(this);
     this.resetState = this.resetState.bind(this);
+    this.handleTrunfoCard = this.handleTrunfoCard.bind(this);
   }
 
   handleChange({ target }) {
-    const dataLabel = target.getAttribute('data-label');
-    const { name, value, id, checked } = target;
-    if (id === 'attr1') {
-      this.setState({ cardAttr1Label: dataLabel });
-    } else if (id === 'attr2') {
-      this.setState({ cardAttr2Label: dataLabel });
-    } else if (id === 'attr3') {
-      this.setState({ cardAttr3Label: dataLabel });
-    } else if (id === 'rarity') {
-      this.setState({ cardRareLabel: dataLabel });
-    }
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+
     this.setState({
       [name]: value,
-      cardTrunfo: checked,
     }, this.handleButtonDisabled);
   }
 
@@ -70,6 +62,7 @@ class App extends React.Component {
       }],
     }));
     this.resetState();
+    this.handleTrunfoCard();
   }
 
   handleButtonDisabled() {
@@ -97,8 +90,15 @@ class App extends React.Component {
       && ((Number(cardAttr3) >= 0) && (Number(cardAttr3) <= maxAttrSingle))
       && ((Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3)) <= maxAttrAll)
     );
-    console.log(validation);
+
     this.setState({ isSaveButtonDisabled: !validation });
+  }
+
+  handleTrunfoCard() {
+    const { cardTrunfo, hasTrunfo } = this.state;
+    if (cardTrunfo && !hasTrunfo) {
+      this.setState({ hasTrunfo: true });
+    }
   }
 
   resetState() {
@@ -108,12 +108,8 @@ class App extends React.Component {
       cardAttr1: '0',
       cardAttr2: '0',
       cardAttr3: '0',
-      cardAttr1Label: '',
-      cardAttr2Label: '',
-      cardAttr3Label: '',
       cardImage: '',
       cardRare: '',
-      cardRareLabel: '',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
     });
@@ -157,13 +153,15 @@ class App extends React.Component {
                 cardAttr1={ cardAttr1 }
                 cardAttr2={ cardAttr2 }
                 cardAttr3={ cardAttr3 }
-                cardAttr1Label="Price"
-                cardAttr2Label="Speed"
-                cardAttr3Label="Torch"
+                cardAttr1Label={ cardAttr1Label }
+                cardAttr2Label={ cardAttr2Label }
+                cardAttr3Label={ cardAttr3Label }
                 cardImage={ cardImage }
                 cardRare={ cardRare }
-                cardRareLabel="Rarity"
+                cardRareLabel={ cardRareLabel }
                 cardTrunfo={ cardTrunfo }
+                hasTrunfo={ hasTrunfo }
+                textTrunfo="Você já tem um Super Trunfo em seu baralho"
                 isSaveButtonDisabled={ isSaveButtonDisabled }
                 onSaveButtonClick={ this.handleSaveButtonClick }
                 onInputChange={ this.handleChange }
