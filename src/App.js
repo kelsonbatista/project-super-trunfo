@@ -67,7 +67,7 @@ class App extends React.Component {
   }
 
   handleDeleteButtonClick(event) {
-    // event.preventDefault();
+    event.preventDefault();
     console.log(`entrou - event.target.cardname --> ${event.target.cardName}`);
     const { cardList } = this.state;
     console.log(`cardList --> ${cardList[0]}`);

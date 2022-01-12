@@ -12,6 +12,7 @@ class Button extends Component {
       classDiv,
       disabled,
       label,
+      param,
       onClick,
     } = this.props;
 
@@ -25,10 +26,11 @@ class Button extends Component {
           data-label={ label }
           className={ classElement }
           disabled={ disabled }
-          onClick={ onClick }
+          onClick={ param ? onClick(param) : onClick }
         >
           {label}
         </button>
+        {console.log(`param: ${param}`)}
       </div>
     );
   }
