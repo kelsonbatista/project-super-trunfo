@@ -19,7 +19,23 @@ class Card extends Component {
       cardRare,
       cardRareLabel,
       cardTrunfo,
+      hasTrunfo,
     } = this.props;
+
+    function handleTrunfoImg() {
+      if (cardTrunfo) {
+        return (
+          <div
+            className="card__super"
+            data-testid="trunfo-card"
+            data-trunfo={ hasTrunfo }
+          >
+            Super Trunfo
+          </div>
+        );
+      }
+      return '';
+    }
 
     return (
       <div
@@ -75,11 +91,12 @@ class Card extends Component {
             { cardRare ? `${cardRareLabel}: ${cardRare}` : '' }
           </span>
         </div>
-        {
+        {/* {
           cardTrunfo
-            ? <div className="card__super" data-testid="trunfo-card">Super Trunfo</div>
+            ? <div className="card__super" data-testid="trunfo-card" data-trunfo={ hasTrunfo }>Super Trunfo</div>
             : ''
-        }
+        } */}
+        {handleTrunfoImg()}
       </div>
     );
   }

@@ -41,7 +41,7 @@ class List extends Component {
               classDiv={ isList ? 'card__btn-delete-div' : 'card__btn-none' }
               disabled={ false }
               label="Excluir"
-              param={ card }
+              card={ card }
               onClick={ onDeleteButtonClick }
             />
           </div>

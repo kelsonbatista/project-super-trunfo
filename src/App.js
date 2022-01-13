@@ -66,16 +66,19 @@ class App extends React.Component {
     this.handleTrunfoCard();
   }
 
-  handleDeleteButtonClick(event) {
-    event.preventDefault();
-    console.log(`entrou - event.target.cardname --> ${event.target.cardName}`);
+  handleDeleteButtonClick(btnCard) {
     const { cardList } = this.state;
-    console.log(`cardList --> ${cardList[0]}`);
-    // cardList.filter((card) => card.cardName !== event.cardName);
+    if (btnCard.cardTrunfo) {
+      this.setState({ hasTrunfo: false });
+    }
 
-    // this.setState({
-    //   cardList: [...cardList],
-    // });
+    if (cardList.length === 1) {
+      cardList.pop();
+      this.setState({ cardList: [] });
+    } else {
+      const newList = cardList.filter((card) => (card.cardName !== btnCard.cardName));
+      this.setState({ cardList: newList });
+    }
   }
 
   handleButtonDisabled() {
@@ -199,6 +202,7 @@ class App extends React.Component {
                 cardRare={ cardRare }
                 cardRareLabel={ cardRareLabel }
                 cardTrunfo={ cardTrunfo }
+                hasTrunfo={ hasTrunfo }
               />
             </div>
           </section>
@@ -207,7 +211,7 @@ class App extends React.Component {
               <h1 className="list__title">List</h1>
               <List
                 cardList={ cardList }
-                onDeleteButtonClick={ () => this.handleDeleteButtonClick }
+                onDeleteButtonClick={ this.handleDeleteButtonClick }
               />
             </div>
           </section>
