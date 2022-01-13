@@ -3,6 +3,7 @@ import './App.css';
 import Form from './components/Form';
 import Card from './components/Card';
 import List from './components/List';
+import Filter from './components/Filter';
 
 class App extends React.Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       cardList: [],
+      filterName: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -32,15 +34,17 @@ class App extends React.Component {
     this.handleButtonDisabled = this.handleButtonDisabled.bind(this);
     this.resetState = this.resetState.bind(this);
     this.handleTrunfoCard = this.handleTrunfoCard.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
   }
 
   handleChange({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-
     this.setState({
       [name]: value,
     }, this.handleButtonDisabled);
+    console.log(target.value);
   }
 
   handleSaveButtonClick(event) {
@@ -79,6 +83,56 @@ class App extends React.Component {
       const newList = cardList.filter((card) => (card.cardName !== btnCard.cardName));
       this.setState({ cardList: newList });
     }
+  }
+
+   handleSearchChange({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
+    console.log(target.value);
+  }
+
+  handleSearchButtonClick(event) {
+    event.preventDefault();
+    const { cardList, filterName } = this.state;
+    this.setState((prevState) => ({
+      filterName: prevState.filterName,
+    }));
+
+    const filterList = cardList
+      .filter((card) => (card.cardName.toLowerCase()).includes(filterName));
+      // .map((card, index) => (
+      //   <div key={ index }>
+      //     <Card
+      //       isList={ isList }
+      //       cardTopic="Luxury Cars"
+      //       cardName={ card.cardName }
+      //       cardDescription={ card.cardDescription }
+      //       cardAttr1={ card.cardAttr1 }
+      //       cardAttr2={ card.cardAttr2 }
+      //       cardAttr3={ card.cardAttr3 }
+      //       cardAttr1Label={ card.cardAttr1Label }
+      //       cardAttr2Label={ card.cardAttr2Label }
+      //       cardAttr3Label={ card.cardAttr3Label }
+      //       cardImage={ card.cardImage }
+      //       cardRare={ card.cardRare }
+      //       cardRareLabel={ card.cardRareLabel }
+      //       cardTrunfo={ card.cardTrunfo }
+      //     />
+      //   </div>
+      //   ))}
+    // this.setState({ cardList: filterList });
+    // constole.log(event.target.)
+    // const { filterName } = this.state;
+    // this.setState((prevState) => ({
+    //   filterName: prevState.filterName,
+    // }));
+    // const { name } = target;
+    // const value = target.type === 'checkbox' ? target.checked : target.value;
+    // this.setState({ [name]: value });
+    console.log(filterName);
   }
 
   handleButtonDisabled() {
@@ -148,6 +202,7 @@ class App extends React.Component {
       hasTrunfo,
       isSaveButtonDisabled,
       cardList,
+      filterName,
     } = this.state;
 
     return (
@@ -207,9 +262,18 @@ class App extends React.Component {
             </div>
           </section>
           <section className="list">
+            <div className="filter__div">
+              <h1 className="filter__title">Filter</h1>
+              <Filter
+                filterName={ filterName }
+                onInputChange={ this.handleSearchChange }
+                onSearchButtonClick={ this.handleSearchButtonClick }
+              />
+            </div>
             <div className="list__div">
               <h1 className="list__title">List</h1>
               <List
+                filterName={ filterName }
                 cardList={ cardList }
                 onDeleteButtonClick={ this.handleDeleteButtonClick }
               />
