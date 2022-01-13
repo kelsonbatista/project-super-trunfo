@@ -7,14 +7,20 @@ class List extends Component {
   render() {
     const {
       cardList,
+      cardListFilter,
       onDeleteButtonClick,
+      isFilterNotFound,
     } = this.props;
 
     const isList = true;
 
+    if (isFilterNotFound) {
+      return '';
+    }
+
     return (
       <div className="list__group">
-        {cardList
+        {(cardListFilter.length !== 0 ? cardListFilter : cardList)
           .map((card, index) => (
             <div key={ index }>
               <Card
@@ -54,7 +60,9 @@ class List extends Component {
 
 List.propTypes = {
   cardList: PropTypes.array,
+  cardListFilter: PropTypes.array,
   onDeleteButtonClick: PropTypes.func,
+  isFilterNotFound: PropTypes.bool,
 }.isRequired;
 
 export default List;

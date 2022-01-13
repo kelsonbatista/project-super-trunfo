@@ -7,7 +7,7 @@ class Filter extends Component {
   render() {
     const {
       filterName,
-      onInputChange,
+      onSearchChange,
       onSearchButtonClick,
     } = this.props;
 
@@ -24,7 +24,7 @@ class Filter extends Component {
             classDiv="col-lg-12"
             value={ filterName }
             label="Name"
-            onChange={ onInputChange }
+            onChange={ onSearchChange }
           />
 
           <Button

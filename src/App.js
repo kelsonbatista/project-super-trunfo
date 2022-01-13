@@ -25,31 +25,31 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       cardList: [],
+      cardListFilter: [],
       filterName: '',
+      isFilterNotFound: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSaveButtonClick = this.handleSaveButtonClick.bind(this);
     this.handleDeleteButtonClick = this.handleDeleteButtonClick.bind(this);
     this.handleButtonDisabled = this.handleButtonDisabled.bind(this);
-    this.resetState = this.resetState.bind(this);
     this.handleTrunfoCard = this.handleTrunfoCard.bind(this);
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
+    this.resetState = this.resetState.bind(this);
+    this.resetSearchState = this.resetSearchState.bind(this);
   }
 
   handleChange({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      [name]: value,
-    }, this.handleButtonDisabled);
+    this.setState({ [name]: value }, this.handleButtonDisabled);
     console.log(target.value);
   }
 
   handleSaveButtonClick(event) {
     event.preventDefault();
-
     this.setState((prevState) => ({
       cardList: [...prevState.cardList, {
         cardName: prevState.cardName,
@@ -68,107 +68,62 @@ class App extends React.Component {
     }));
     this.resetState();
     this.handleTrunfoCard();
+    this.setState({ cardListFilter: [] });
   }
 
   handleDeleteButtonClick(btnCard) {
-    const { cardList } = this.state;
-    if (btnCard.cardTrunfo) {
-      this.setState({ hasTrunfo: false });
-    }
-
+    const { cardList, cardListFilter } = this.state;
+    if (btnCard.cardTrunfo) this.setState({ hasTrunfo: false });
     if (cardList.length === 1) {
       cardList.pop();
-      this.setState({ cardList: [] });
+      this.setState({ cardList: [], cardListFilter: [] });
     } else {
-      const newList = cardList.filter((card) => (card.cardName !== btnCard.cardName));
-      this.setState({ cardList: newList });
+      const newList = cardList
+        .filter((card) => (card.cardName !== btnCard.cardName));
+      const newListFilter = cardListFilter
+        .filter((card) => (card.cardName !== btnCard.cardName));
+      this.setState({ cardList: newList, cardListFilter: newListFilter });
     }
   }
 
-   handleSearchChange({ target }) {
+  handleSearchChange({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      [name]: value,
-    });
+    this.setState({ [name]: value });
     console.log(target.value);
   }
 
   handleSearchButtonClick(event) {
     event.preventDefault();
-    const { cardList, filterName } = this.state;
-    this.setState((prevState) => ({
-      filterName: prevState.filterName,
-    }));
-
+    const { cardList, filterName, isFilterNotFound } = this.state;
+    this.setState((prevState) => ({ filterName: prevState.filterName }));
     const filterList = cardList
       .filter((card) => (card.cardName.toLowerCase()).includes(filterName));
-      // .map((card, index) => (
-      //   <div key={ index }>
-      //     <Card
-      //       isList={ isList }
-      //       cardTopic="Luxury Cars"
-      //       cardName={ card.cardName }
-      //       cardDescription={ card.cardDescription }
-      //       cardAttr1={ card.cardAttr1 }
-      //       cardAttr2={ card.cardAttr2 }
-      //       cardAttr3={ card.cardAttr3 }
-      //       cardAttr1Label={ card.cardAttr1Label }
-      //       cardAttr2Label={ card.cardAttr2Label }
-      //       cardAttr3Label={ card.cardAttr3Label }
-      //       cardImage={ card.cardImage }
-      //       cardRare={ card.cardRare }
-      //       cardRareLabel={ card.cardRareLabel }
-      //       cardTrunfo={ card.cardTrunfo }
-      //     />
-      //   </div>
-      //   ))}
-    // this.setState({ cardList: filterList });
-    // constole.log(event.target.)
-    // const { filterName } = this.state;
-    // this.setState((prevState) => ({
-    //   filterName: prevState.filterName,
-    // }));
-    // const { name } = target;
-    // const value = target.type === 'checkbox' ? target.checked : target.value;
-    // this.setState({ [name]: value });
-    console.log(filterName);
+    if (isFilterNotFound === true) this.setState(({ isFilterNotFound: false }));
+    if (filterList.length === 0) this.setState(({ isFilterNotFound: true }));
+    this.setState(({ cardListFilter: filterList }));
+    this.resetSearchState();
   }
 
   handleButtonDisabled() {
     const maxAttrAll = 210;
     const maxAttrSingle = 90;
-
-    const {
-      cardName,
-      cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardImage,
-      cardRare,
-    } = this.state;
-
+    const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
+      cardRare } = this.state;
     const validation = (
-      cardName !== ''
-      && cardDescription !== ''
-      && cardImage !== ''
-      && cardRare !== ''
-      && cardAttr1 !== ''
+      cardName !== '' && cardDescription !== '' && cardImage !== ''
+      && cardRare !== '' && cardAttr1 !== ''
       && ((Number(cardAttr1) >= 0) && (Number(cardAttr1) <= maxAttrSingle))
       && ((Number(cardAttr2) >= 0) && (Number(cardAttr2) <= maxAttrSingle))
       && ((Number(cardAttr3) >= 0) && (Number(cardAttr3) <= maxAttrSingle))
       && ((Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3)) <= maxAttrAll)
     );
-
     this.setState({ isSaveButtonDisabled: !validation });
   }
 
   handleTrunfoCard() {
     const { cardTrunfo, hasTrunfo } = this.state;
-    if (cardTrunfo && !hasTrunfo) {
-      this.setState({ hasTrunfo: true });
-    }
+    if (cardTrunfo && !hasTrunfo) this.setState({ hasTrunfo: true });
   }
 
   resetState() {
@@ -185,24 +140,15 @@ class App extends React.Component {
     });
   }
 
+  resetSearchState() {
+    this.setState({ filterName: '' });
+  }
+
   render() {
-    const {
-      cardName,
-      cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardAttr1Label,
-      cardAttr2Label,
-      cardAttr3Label,
-      cardImage,
-      cardRare,
-      cardRareLabel,
-      cardTrunfo,
-      hasTrunfo,
-      isSaveButtonDisabled,
-      cardList,
-      filterName,
+    const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
+      cardAttr1Label, cardAttr2Label, cardAttr3Label, cardImage,
+      cardRare, cardRareLabel, cardTrunfo, hasTrunfo, isSaveButtonDisabled,
+      cardList, cardListFilter, filterName, isFilterNotFound,
     } = this.state;
 
     return (
@@ -266,16 +212,17 @@ class App extends React.Component {
               <h1 className="filter__title">Filter</h1>
               <Filter
                 filterName={ filterName }
-                onInputChange={ this.handleSearchChange }
+                onSearchChange={ this.handleSearchChange }
                 onSearchButtonClick={ this.handleSearchButtonClick }
               />
             </div>
             <div className="list__div">
               <h1 className="list__title">List</h1>
               <List
-                filterName={ filterName }
                 cardList={ cardList }
+                cardListFilter={ cardListFilter }
                 onDeleteButtonClick={ this.handleDeleteButtonClick }
+                isFilterNotFound={ isFilterNotFound }
               />
             </div>
           </section>
