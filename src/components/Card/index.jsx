@@ -62,27 +62,27 @@ class Card extends Component {
           <span>{cardDescription}</span>
         </div>
 
-        <div className="card__attr1-label" ref={ this.attr1 }>
+        <div className="card__attr1-label card__attr" ref={ this.attr1 }>
           <span>{ cardAttr1Label }</span>
         </div>
 
-        <div className="card__attr1" data-testid="attr1-card">
+        <div className="card__attr1 card__attr" data-testid="attr1-card">
           <span>{cardAttr1}</span>
         </div>
 
-        <div className="card__attr2-label">
+        <div className="card__attr2-label card__attr">
           <span>{ cardAttr2Label }</span>
         </div>
 
-        <div className="card__attr2" data-testid="attr2-card">
+        <div className="card__attr2 card__attr" data-testid="attr2-card">
           <span>{cardAttr2}</span>
         </div>
 
-        <div className="card__attr3-label">
+        <div className="card__attr3-label card__attr">
           <span>{cardAttr3Label}</span>
         </div>
 
-        <div className="card__attr3" data-testid="attr3-card">
+        <div className="card__attr3 card__attr" data-testid="attr3-card">
           <span>{cardAttr3}</span>
         </div>
 
