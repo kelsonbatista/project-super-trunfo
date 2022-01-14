@@ -13,6 +13,7 @@ class Input extends Component {
       classDiv,
       value,
       label,
+      disabled,
       onChange,
     } = this.props;
 
@@ -28,6 +29,7 @@ class Input extends Component {
             data-label={ label }
             className={ classElement }
             value={ value }
+            disabled={ disabled }
             onChange={ onChange }
           />
         </label>

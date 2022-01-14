@@ -28,6 +28,8 @@ class App extends React.Component {
       cardListFilter: [],
       filterName: '',
       isFilterNotFound: false,
+      filterRare: '',
+      filterTrunfo: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -45,7 +47,6 @@ class App extends React.Component {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({ [name]: value }, this.handleButtonDisabled);
-    console.log(target.value);
   }
 
   handleSaveButtonClick(event) {
@@ -95,10 +96,21 @@ class App extends React.Component {
 
   handleSearchButtonClick(event) {
     event.preventDefault();
-    const { cardList, filterName, isFilterNotFound } = this.state;
-    this.setState((prevState) => ({ filterName: prevState.filterName }));
-    const filterList = cardList
-      .filter((card) => (card.cardName.toLowerCase()).includes(filterName));
+    const { cardList, filterName, isFilterNotFound, filterRare,
+      filterTrunfo } = this.state;
+    this.setState((prevState) => ({
+      filterName: prevState.filterName,
+      filterRare: prevState.filterRare }));
+    let filterList = '';
+    if (filterTrunfo !== false) {
+      filterList = cardList.filter((card) => (card.cardTrunfo));
+    } else {
+      filterList = cardList
+        .filter((card) => (card.cardName.toLowerCase()).includes(filterName)
+        && (filterRare
+          ? card.cardRare.toLowerCase() === filterRare
+          : card.cardRare.toLowerCase().includes(filterRare)));
+    }
     if (isFilterNotFound === true) this.setState(({ isFilterNotFound: false }));
     if (filterList.length === 0) this.setState(({ isFilterNotFound: true }));
     this.setState(({ cardListFilter: filterList }));
@@ -141,14 +153,14 @@ class App extends React.Component {
   }
 
   resetSearchState() {
-    this.setState({ filterName: '' });
+    this.setState({ filterName: '', filterRare: '' });
   }
 
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
       cardAttr1Label, cardAttr2Label, cardAttr3Label, cardImage,
       cardRare, cardRareLabel, cardTrunfo, hasTrunfo, isSaveButtonDisabled,
-      cardList, cardListFilter, filterName, isFilterNotFound,
+      cardList, cardListFilter, filterName, isFilterNotFound, filterRare, filterTrunfo,
     } = this.state;
 
     return (
@@ -212,6 +224,8 @@ class App extends React.Component {
               <h1 className="filter__title">Filter</h1>
               <Filter
                 filterName={ filterName }
+                filterRare={ filterRare }
+                filterTrunfo={ filterTrunfo }
                 onSearchChange={ this.handleSearchChange }
                 onSearchButtonClick={ this.handleSearchButtonClick }
               />

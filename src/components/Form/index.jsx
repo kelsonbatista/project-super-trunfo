@@ -128,7 +128,11 @@ class Form extends Component {
             value={ cardRare }
             label={ cardRareLabel }
             onChange={ onInputChange }
-            options={ ['normal', 'raro', 'muito raro'] }
+            options={ [
+              { optionText: 'normal', optionValue: 'normal' },
+              { optionText: 'raro', optionValue: 'raro' },
+              { optionText: 'muito raro', optionValue: 'muito-raro' },
+            ] }
           />
 
           {hasTrunfo

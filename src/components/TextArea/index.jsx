@@ -18,8 +18,7 @@ class TextArea extends Component {
     return (
       <div className={ classDiv }>
         <label htmlFor={ id } className={ classLabel }>
-          {label}
-          :
+          {`${label}: `}
           <textarea
             id={ id }
             name={ name }
