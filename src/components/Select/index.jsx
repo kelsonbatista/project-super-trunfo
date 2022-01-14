@@ -2,14 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Select extends Component {
-  isFilter() {
-    const { isFilter } = this.props;
-    console.log(isFilter);
-    if (isFilter !== false) {
-      return '<option key="1000" value="todas" selected>todas</option>';
-    }
-  }
-
   render() {
     const {
       id,
@@ -23,6 +15,7 @@ class Select extends Component {
       label,
       onChange,
       disabled,
+      isFilter,
       options,
     } = this.props;
 
@@ -35,13 +28,14 @@ class Select extends Component {
             name={ name }
             data-testid={ dataTestid }
             data-label={ label }
+            data-filter={ isFilter }
             className={ classElement }
             defaultValue={ defaultValue }
             value={ value }
             disabled={ disabled }
             onChange={ onChange }
           >
-            {<option key="1000" value="">todas</option>}
+            {(isFilter ? <option key="1000" value="">todas</option> : null)}
             {options.map(({ optionText, optionValue }, index) => (
               <option key={ index } value={ optionValue }>{optionText}</option>))}
           </select>

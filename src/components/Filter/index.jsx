@@ -49,7 +49,7 @@ class Filter extends Component {
             options={ [
               { optionText: 'normal', optionValue: 'normal' },
               { optionText: 'raro', optionValue: 'raro' },
-              { optionText: 'muito raro', optionValue: 'muito-raro' },
+              { optionText: 'muito raro', optionValue: 'muito raro' },
             ] }
           />
 
