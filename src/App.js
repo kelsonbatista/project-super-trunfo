@@ -226,7 +226,6 @@ class App extends React.Component {
                 filterRare={ filterRare }
                 filterTrunfo={ filterTrunfo }
                 onSearchChange={ this.handleSearchChange }
-                onSearchButtonClick={ this.handleSearchButtonClick }
               />
             </div>
             <div className="list__div">
