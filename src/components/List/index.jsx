@@ -4,10 +4,33 @@ import Card from '../Card';
 import Button from '../Button';
 
 class List extends Component {
+  constructor() {
+    super();
+    this.handleSearch = this.handleSearch.bind(this);
+  }
+
+  handleSearch() {
+    const { filterName, filterRare, filterTrunfo, cardList, cardListFilter } = this.props;
+    const list = (cardListFilter.length !== 0 ? cardListFilter : cardList);
+    if (filterTrunfo !== false) {
+      const filterList = list.filter((card) => (card.cardTrunfo));
+      return filterList;
+    }
+    const filterList = list.filter((card) => (card.cardName
+      .toLowerCase()).includes(filterName.toLowerCase())
+     && (filterRare
+       ? card.cardRare.toLowerCase() === filterRare
+       : card.cardRare.toLowerCase().includes(filterRare.toLowerCase())));
+    return filterList;
+  }
+
   render() {
     const {
-      cardList,
-      cardListFilter,
+      // filterName,
+      // filterRare,
+      // filterTrunfo,
+      // cardList,
+      // cardListFilter,
       onDeleteButtonClick,
       isFilterNotFound,
     } = this.props;
@@ -20,7 +43,8 @@ class List extends Component {
 
     return (
       <div className="list__group">
-        {(cardListFilter.length !== 0 ? cardListFilter : cardList)
+        {/* {(cardListFilter.length !== 0 ? cardListFilter : cardList)} */}
+        { this.handleSearch()
           .map((card, index) => (
             <div key={ index }>
               <Card

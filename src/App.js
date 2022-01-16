@@ -38,7 +38,7 @@ class App extends React.Component {
     this.handleButtonDisabled = this.handleButtonDisabled.bind(this);
     this.handleTrunfoCard = this.handleTrunfoCard.bind(this);
     this.handleSearchChange = this.handleSearchChange.bind(this);
-    this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
+    // this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
     this.resetState = this.resetState.bind(this);
     this.resetSearchState = this.resetSearchState.bind(this);
   }
@@ -93,28 +93,28 @@ class App extends React.Component {
     this.setState({ [name]: value });
   }
 
-  handleSearchButtonClick(event) {
-    event.preventDefault();
-    const { cardList, filterName, isFilterNotFound, filterRare,
-      filterTrunfo } = this.state;
-    this.setState((prevState) => ({
-      filterName: prevState.filterName,
-      filterRare: prevState.filterRare }));
-    let filterList = '';
-    if (filterTrunfo !== false) {
-      filterList = cardList.filter((card) => (card.cardTrunfo));
-    } else {
-      filterList = cardList
-        .filter((card) => (card.cardName.toLowerCase()).includes(filterName)
-        && (filterRare
-          ? card.cardRare.toLowerCase() === filterRare
-          : card.cardRare.toLowerCase().includes(filterRare)));
-    }
-    if (isFilterNotFound === true) this.setState(({ isFilterNotFound: false }));
-    if (filterList.length === 0) this.setState(({ isFilterNotFound: true }));
-    this.setState(({ cardListFilter: filterList }));
-    this.resetSearchState();
-  }
+  // handleSearchButtonClick(event) {
+  //   event.preventDefault();
+  //   const { cardList, filterName, isFilterNotFound, filterRare,
+  //     filterTrunfo } = this.state;
+  //   this.setState((prevState) => ({
+  //     filterName: prevState.filterName,
+  //     filterRare: prevState.filterRare }));
+  //   let filterList = '';
+  //   if (filterTrunfo !== false) {
+  //     filterList = cardList.filter((card) => (card.cardTrunfo));
+  //   } else {
+  //     filterList = cardList
+  //       .filter((card) => (card.cardName.toLowerCase()).includes(filterName.toLowerCase())
+  //       && (filterRare
+  //         ? card.cardRare.toLowerCase() === filterRare
+  //         : card.cardRare.toLowerCase().includes(filterRare.toLowerCase())));
+  //   }
+  //   if (isFilterNotFound === true) this.setState(({ isFilterNotFound: false }));
+  //   if (filterList.length === 0) this.setState(({ isFilterNotFound: true }));
+  //   this.setState(({ cardListFilter: filterList }));
+  //   this.resetSearchState();
+  // }
 
   handleButtonDisabled() {
     const maxAttrAll = 210;
@@ -232,6 +232,9 @@ class App extends React.Component {
             <div className="list__div">
               <h1 className="list__title">List</h1>
               <List
+                filterName={ filterName }
+                filterRare={ filterRare }
+                filterTrunfo={ filterTrunfo }
                 cardList={ cardList }
                 cardListFilter={ cardListFilter }
                 onDeleteButtonClick={ this.handleDeleteButtonClick }

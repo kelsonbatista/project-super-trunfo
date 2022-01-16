@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Input from '../Input';
-import Button from '../Button';
+// import Button from '../Button';
 import Select from '../Select';
 
 class Filter extends Component {
@@ -11,7 +11,7 @@ class Filter extends Component {
       filterRare,
       filterTrunfo,
       onSearchChange,
-      onSearchButtonClick,
+      // onSearchButtonClick,
 
     } = this.props;
 
@@ -65,7 +65,7 @@ class Filter extends Component {
             onChange={ onSearchChange }
           />
 
-          <Button
+          {/* <Button
             id="submit"
             type="submit"
             dataTestid="search-button"
@@ -74,7 +74,7 @@ class Filter extends Component {
             disabled={ false }
             label="Buscar"
             onClick={ onSearchButtonClick }
-          />
+          /> */}
         </form>
       </div>
     );
