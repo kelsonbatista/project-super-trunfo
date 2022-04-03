@@ -4,6 +4,7 @@ import Form from './components/Form';
 import Card from './components/Card';
 import List from './components/List';
 import Filter from './components/Filter';
+import Logo from './images/logo.png';
 
 class App extends React.Component {
   constructor(props) {
@@ -114,7 +115,6 @@ class App extends React.Component {
   //   if (filterList.length === 0) this.setState(({ isFilterNotFound: true }));
   //   this.setState(({ cardListFilter: filterList }));
   //   this.resetSearchState();
-  // }
 
   handleButtonDisabled() {
     const maxAttrAll = 210;
@@ -167,7 +167,7 @@ class App extends React.Component {
         <header>
           <section className="header">
             <div className="header__title">
-              <h1>Tryunfo</h1>
+              <img src={ Logo } alt="Logo" className="logo" />
             </div>
           </section>
         </header>

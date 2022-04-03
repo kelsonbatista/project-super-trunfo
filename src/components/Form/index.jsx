@@ -54,7 +54,7 @@ class Form extends Component {
             dataTestid="name-input"
             classLabel="form-label"
             classElement="form-control"
-            classDiv="col-lg-12"
+            classDiv="input-div"
             value={ cardName }
             label="Name"
             onChange={ onInputChange }
@@ -66,6 +66,7 @@ class Form extends Component {
             dataTestid="description-input"
             classLabel="form-label"
             classElement="form-control"
+            classDiv="input-div"
             value={ cardDescription }
             label="Description"
             onChange={ onInputChange }
@@ -78,6 +79,7 @@ class Form extends Component {
             dataTestid="attr1-input"
             classLabel="form-label"
             classElement="form-control"
+            classDiv="input-div"
             value={ cardAttr1 }
             label={ cardAttr1Label }
             onChange={ onInputChange }
@@ -90,6 +92,7 @@ class Form extends Component {
             dataTestid="attr2-input"
             classLabel="form-label"
             classElement="form-control"
+            classDiv="input-div"
             value={ cardAttr2 }
             label={ cardAttr2Label }
             onChange={ onInputChange }
@@ -102,6 +105,7 @@ class Form extends Component {
             dataTestid="attr3-input"
             classLabel="form-label"
             classElement="form-control"
+            classDiv="input-div"
             value={ cardAttr3 }
             label={ cardAttr3Label }
             onChange={ onInputChange }
@@ -114,6 +118,7 @@ class Form extends Component {
             dataTestid="image-input"
             classLabel="form-label"
             classElement="form-control"
+            classDiv="input-div"
             value={ cardImage }
             label="Image"
             onChange={ onInputChange }
@@ -125,6 +130,7 @@ class Form extends Component {
             dataTestid="rare-input"
             classLabel="form-label"
             classElement="form-select card__rare-select"
+            classDiv="input-div"
             value={ cardRare }
             label={ cardRareLabel }
             onChange={ onInputChange }

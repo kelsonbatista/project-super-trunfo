@@ -1,6 +1,9 @@
+body {
+  background: #aaa;
+}
+
 .header__title {
-  background: #ddd;
-  margin: 40px auto;
+  margin: 20px 0 0 0;
   text-align: center;
 }
 
@@ -13,19 +16,56 @@ main {
 }
 
 .form, .card, .list {
-  border: 1px solid white;
+  /* border: 1px solid white; */
   min-height: 700px;
   width: 40%;
 }
 
 .list {
-  background: lightcoral;
+  background: #333;
+  color: white;
   width: 100%;
 }
 
-.list__div {
-  margin: 0 auto;
-  width: 80%;
+.list__div, .filter__div {
+  /* background: yellow; */
+  margin: 50px auto;
+  width: 70%;
+}
+
+.filter__div {
+  background: #96125D;
+  border: 5px double goldenrod;
+  border-radius: 10px;
+  display: flex;
+}
+
+.filter__title {
+  margin-left: 20px;
+  margin-right: 80px;
+}
+
+#formRefSubmit {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  font-weight: 700;
+  height: 60px;
+  margin-top: 5px;
+}
+
+#formRefSubmit label {
+  margin-left: 20px;
+}
+
+#formRefSubmit input {
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+#formRefSubmit select {
+  margin-top: 20px;
+  margin-right: 20px;
 }
 
 .list__group {
@@ -46,7 +86,7 @@ main {
 }
 
 .form__single {
-  background: yellow;
+  /* background: yellow; */
   margin: 0 auto;
   width: 80%;
 }
@@ -79,12 +119,12 @@ main {
 }
 
 .card__image {
-  height: 180px;
+  height: 185px;
   left: 5px;
   overflow: hidden;
   position: absolute;
   top: 40px;
-  width: 295px;
+  width: 300px;
   z-index: 50;
 }
 
@@ -104,7 +144,7 @@ img {
   position: absolute;
   text-shadow: 2px 2px #222;
   text-transform: uppercase;
-  top: 9px;
+  top: 12px;
   z-index: 200;
 }
 
@@ -117,17 +157,18 @@ img {
   position: absolute;
   text-align: center;
   text-shadow: 2px 2px #222;
-  top: 207px;
+  top: 216px;
   transform: rotate(-7deg);
   width: 270px;
   z-index: 200;
 }
 
 .card__description {
+  color: #222;
   left: 20px;
   line-height: 20px;
   position: absolute;
-  top: 280px;
+  top: 290px;
   width: 260px;
   z-index: 200;
 }
@@ -146,29 +187,31 @@ img {
 
 .card__attr1-label, .card__attr2-label, .card__attr3-label {
   left: 20px;
-  padding-left: 20px;
-  width: 160px;
+  padding: 3px 0 3px 20px;
+  width: 150px;
 }
 
 .card__attr1, .card__attr2, .card__attr3 {
   left: 200px;
+  padding: 3px 0;
   text-align: center;
   width: 80px;
 }
 
 .card__attr1-label, .card__attr1 {
-  top: 325px;
+  top: 335px;
 }
 
 .card__attr2-label, .card__attr2 {
-  top: 360px;
+  top: 370px;
 }
 
 .card__attr3-label, .card__attr3 {
-  top: 395px;
+  top: 405px;
 }
 
 .card__rare {
+  color: #222;
   font-family: Roboto , sans-serif;
   font-size: 20px;
   font-weight: 700;
@@ -176,7 +219,7 @@ img {
   position: absolute;
   text-align: center;
   text-transform: capitalize;
-  top: 430px;
+  top: 440px;
   width: 260px;
   z-index: 200;
 }
@@ -208,5 +251,60 @@ img {
 }
 
 .card__btn-delete-div {
+  margin: auto;
+  margin-right: 10px;
+  margin-bottom: 30px;
   text-align: center;
+  width: 313px;
+}
+
+.form-label {
+  align-self: center;
+  /* background: red; */
+  font-size: 18px;
+  width: 100px;
+}
+
+.form-control, .form-select {
+  font-size: 18px;
+  margin-bottom: 10px;
+  padding: 6px;
+  width: 200px;
+}
+
+.form-select {
+  margin-bottom: 20px;
+  width: 216px;
+}
+
+.input-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.btn {
+  border-radius: 10px;
+  display: block;
+  font-size: 18px;
+  margin-top: 20px;
+  padding: 12px;
+  width: 100%;
+}
+
+#formRef {
+  /* background: green; */
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 20px
+}
+
+.logo {
+  width: 200px;
+}
+
+.form-check-input {
+  transform: scale(1.7);
+  margin-left: 13px;
+  padding: 5px;
 }

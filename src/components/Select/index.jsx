@@ -23,23 +23,23 @@ class Select extends Component {
       <div className={ classDiv }>
         <label htmlFor={ id } className={ classLabel }>
           {`${label}: `}
-          <select
-            id={ id }
-            name={ name }
-            data-testid={ dataTestid }
-            data-label={ label }
-            data-filter={ isFilter }
-            className={ classElement }
-            defaultValue={ defaultValue }
-            value={ value }
-            disabled={ disabled }
-            onChange={ onChange }
-          >
-            {(isFilter ? <option key="1000" value="">todas</option> : null)}
-            {options.map(({ optionText, optionValue }, index) => (
-              <option key={ index } value={ optionValue }>{optionText}</option>))}
-          </select>
         </label>
+        <select
+          id={ id }
+          name={ name }
+          data-testid={ dataTestid }
+          data-label={ label }
+          data-filter={ isFilter }
+          className={ classElement }
+          defaultValue={ defaultValue }
+          value={ value }
+          disabled={ disabled }
+          onChange={ onChange }
+        >
+          {(isFilter ? <option key="1000" value="">todas</option> : null)}
+          {options.map(({ optionText, optionValue }, index) => (
+            <option key={ index } value={ optionValue }>{optionText}</option>))}
+        </select>
       </div>
     );
   }

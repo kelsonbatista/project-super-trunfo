@@ -21,18 +21,18 @@ class Input extends Component {
       <div className={ classDiv }>
         <label htmlFor={ id } className={ classLabel }>
           {`${label}: `}
-          <input
-            id={ id }
-            type={ type }
-            name={ name }
-            data-testid={ dataTestid }
-            data-label={ label }
-            className={ classElement }
-            value={ value }
-            disabled={ disabled }
-            onChange={ onChange }
-          />
         </label>
+        <input
+          id={ id }
+          type={ type }
+          name={ name }
+          data-testid={ dataTestid }
+          data-label={ label }
+          className={ classElement }
+          value={ value }
+          disabled={ disabled }
+          onChange={ onChange }
+        />
       </div>
     );
   }

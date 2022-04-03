@@ -12,7 +12,6 @@ class Filter extends Component {
       filterTrunfo,
       onSearchChange,
       // onSearchButtonClick,
-
     } = this.props;
 
     const isFilter = true;
@@ -59,7 +58,7 @@ class Filter extends Component {
             name="filterTrunfo"
             dataTestid="trunfo-filter"
             classLabel="form-label"
-            classElement="form-control"
+            classElement="form-check-input"
             value={ filterTrunfo }
             label="Super Trunfo"
             onChange={ onSearchChange }

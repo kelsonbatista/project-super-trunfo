@@ -19,16 +19,16 @@ class TextArea extends Component {
       <div className={ classDiv }>
         <label htmlFor={ id } className={ classLabel }>
           {`${label}: `}
-          <textarea
-            id={ id }
-            name={ name }
-            data-testid={ dataTestid }
-            data-label={ label }
-            className={ classElement }
-            value={ value }
-            onChange={ onChange }
-          />
         </label>
+        <textarea
+          id={ id }
+          name={ name }
+          data-testid={ dataTestid }
+          data-label={ label }
+          className={ classElement }
+          value={ value }
+          onChange={ onChange }
+        />
       </div>
     );
   }
