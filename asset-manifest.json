@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/project-super-trunfo/static/css/main.264efa84.chunk.css",
+    "main.js": "/project-super-trunfo/static/js/main.b0f9766f.chunk.js",
+    "main.js.map": "/project-super-trunfo/static/js/main.b0f9766f.chunk.js.map",
+    "runtime-main.js": "/project-super-trunfo/static/js/runtime-main.e4fa2a41.js",
+    "runtime-main.js.map": "/project-super-trunfo/static/js/runtime-main.e4fa2a41.js.map",
+    "static/js/2.12300c51.chunk.js": "/project-super-trunfo/static/js/2.12300c51.chunk.js",
+    "static/js/2.12300c51.chunk.js.map": "/project-super-trunfo/static/js/2.12300c51.chunk.js.map",
+    "index.html": "/project-super-trunfo/index.html",
+    "static/css/main.264efa84.chunk.css.map": "/project-super-trunfo/static/css/main.264efa84.chunk.css.map",
+    "static/js/2.12300c51.chunk.js.LICENSE.txt": "/project-super-trunfo/static/js/2.12300c51.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/project-super-trunfo/static/media/super.f0f9c608.png",
+    "static/media/logo.57ccb0e5.png": "/project-super-trunfo/static/media/logo.57ccb0e5.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e4fa2a41.js",
+    "static/js/2.12300c51.chunk.js",
+    "static/css/main.264efa84.chunk.css",
+    "static/js/main.b0f9766f.chunk.js"
+  ]
+}
